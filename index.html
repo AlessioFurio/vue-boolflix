@@ -29,7 +29,7 @@
                     <li>titolo originale: {{movie.original_title}}</li>
                     <li>lingua:
                         <span> {{ movie.original_language }} </span>
-                        <img :src="imgFlags[1]" v-if="movie.original_language == 'en'" :alt="movie.original_language">
+                        <img :src="movie.original_language + '.jpg'" :alt="movie.original_language">
                     </li>
                     <li>voto: {{movie.vote_average}}</li>
                     <li>voto in base 5:
@@ -47,9 +47,13 @@
                     <li>titolo originale: {{serie.original_name}}</li>
                     <li>lingua:
                         <span> {{ serie.original_language }} </span>
-                        <img :src="imgFlags[1]" v-if="serie.original_language == 'en'" :alt="serie.original_language">
+                        <img :src="serie.original_language + '.jpg'" :alt="serie.original_language">
                     </li>
                     <li>voto: {{serie.vote_average}}</li>
+                    <li>voto in base 5:
+                        <span> {{serie.vote_average / 2}} </span>
+
+                     </li>
                     <li>
                         <i class="far fa-star" v-for="(star, i) in stars" :class="Math.floor(serie.vote_average / 2) > i? 'active' : ''"></i>
                     </li>
