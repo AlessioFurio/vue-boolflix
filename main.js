@@ -7,6 +7,10 @@ var app = new Vue({
 		movies: [], // array dei movies
 		search: '', // input v-model
 		stars: [1,2,3,4,5],
+		imgFlags: [
+			"ita.jpg",
+			"en.jpg"
+		],
 	},
 
 	methods: {

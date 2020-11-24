@@ -22,8 +22,20 @@ ul {
     margin: 20px;
 }
 
+li {
+    display: flex;
+}
+
 li span {
     background-color: lightgreen;
+    margin-left: 5px;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-left: 5px;
 }
 
 .active{
