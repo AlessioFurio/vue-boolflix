@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>vue-email-list</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+
+        <div id="root">
+            <div class="search-bar">
+                <input v-model="search" @keyUp.enter = "searchFilm" type="text" name="" value="" placeholder="Cerca film...">
+                <button @click="searchFilm">Cerca</button>
+            </div>
+
+            <div class="container">
+                <ul v-for="movie in movies">
+                    <li>titolo: {{movie.title}}</li>
+                    <li>titolo originale: {{movie.original_title}}</li>
+                    <li>lingua: {{movie.original_language}}</li>
+                    <li>voto: {{movie.vote_average}}</li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+
+    <script src="main.js" charset="utf-8"></script>
+
+    </body>
+</html>
