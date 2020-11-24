@@ -18,11 +18,12 @@
 
         <div id="root">
             <div class="search-bar">
-                <input v-model="search" @keyUp.enter = "searchFilm" type="text" name="" value="" placeholder="Cerca film...">
-                <button @click="searchFilm">Cerca</button>
+                <input v-model="search" @keyUp.enter = "searchFilm(), searchSeries()" type="text" name="" value="" placeholder="Cerca film...">
+                <button @click="searchFilm(), searchSeries()">Cerca</button>
             </div>
 
             <div class="container">
+                <h1>Movies</h1>
                 <ul v-for="movie in movies">
                     <li>titolo: {{movie.title}}</li>
                     <li>titolo originale: {{movie.original_title}}</li>
@@ -37,6 +38,20 @@
                      </li>
                     <li>
                         <i class="far fa-star" v-for="(star, i) in stars" :class="Math.floor(movie.vote_average / 2) > i? 'active' : ''"></i>
+                    </li>
+                </ul>
+
+                <h1>Series</h1>
+                <ul v-for="serie in series">
+                    <li>titolo: {{serie.name}}</li>
+                    <li>titolo originale: {{serie.original_name}}</li>
+                    <li>lingua:
+                        <span> {{ serie.original_language }} </span>
+                        <img :src="imgFlags[1]" v-if="serie.original_language == 'en'" :alt="serie.original_language">
+                    </li>
+                    <li>voto: {{serie.vote_average}}</li>
+                    <li>
+                        <i class="far fa-star" v-for="(star, i) in stars" :class="Math.floor(serie.vote_average / 2) > i? 'active' : ''"></i>
                     </li>
                 </ul>
             </div>
