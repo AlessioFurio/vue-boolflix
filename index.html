@@ -28,6 +28,13 @@
                     <li>titolo originale: {{movie.original_title}}</li>
                     <li>lingua: {{movie.original_language}}</li>
                     <li>voto: {{movie.vote_average}}</li>
+                    <li>voto in base 5:
+                        <span>{{movie.vote_average / 2}}</span>
+
+                     </li>
+                    <li>
+                        <i class="far fa-star" v-for="(star, i) in stars" :class="Math.floor(movie.vote_average / 2) > i? 'active' : ''"></i>
+                    </li>
                 </ul>
             </div>
         </div>

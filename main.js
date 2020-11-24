@@ -4,8 +4,9 @@ var app = new Vue({
 	el: '#root',
 
 	data: {
-		movies: [],
-		search: '',
+		movies: [], // array dei movies
+		search: '', // input v-model
+		stars: [1,2,3,4,5],
 	},
 
 	methods: {
@@ -20,8 +21,10 @@ var app = new Vue({
 				})
 			.then((risposta) =>{
 
-				this.movies = risposta.data.results;
+				this.movies = risposta.data.results; // assegno ad array movies la risposta API
+
 				console.log(this.movies);
+
 
 
 			}); // fine then
