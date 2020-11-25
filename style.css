@@ -47,11 +47,20 @@ li span {
     width: 50%;
 }
 
-img {
+img.flags {
     width: 30px;
     height: 30px;
     object-fit: contain;
     margin-left: 5px;
+}
+
+.img-non-disp {
+    width: 185px;
+    height: 262px;
+}
+
+.img-locandina {
+    height: 262px;
 }
 
 .disactive {

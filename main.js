@@ -7,7 +7,6 @@ var app = new Vue({
 		movies: [], // array dei movies
 		series: [],
 		search: '', // input v-model
-		stars: [1,2,3,4,5], // array x stampare stelle
 	},
 
 	methods: {

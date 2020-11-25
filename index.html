@@ -18,7 +18,7 @@
 
         <div id="root">
             <div class="search-bar">
-                <input v-model="search" @keyUp.enter = "searchFilm(), searchSeries()" type="text" name="" value="" placeholder="Cerca film...">
+                <input v-model="search" @keyUp.enter = "searchFilm(), searchSeries()" type="text" name="" value="" placeholder="Cerca film, serie tv...">
                 <button @click="searchFilm(), searchSeries()">Cerca</button>
             </div>
 
@@ -26,16 +26,20 @@
                 <div class="container-movies">
                     <h1>Movies</h1>
                     <ul v-for="movie in movies">
+                        <li>
+                            <img class="img-locandina" v-if="movie.poster_path != null" :src="'https://image.tmdb.org/t/p/' + 'w185' + movie.poster_path" alt="locandina non disponibile">
+                            <img class="img-non-disp" v-else="" src="non-disp.jpg" alt="locandina non disponibile">
+                        </li>
                         <li>Titolo: {{movie.title}}</li>
                         <li>Titolo originale: {{movie.original_title}}</li>
                         <li>Lingua:
-                            <img :src="movie.original_language + '.jpg'" :alt="movie.original_language">
+                            <img class="flags" :src="movie.original_language + '.jpg'" :alt="movie.original_language">
                         </li>
                         <li>Voto
                             <span> {{movie.vote_average / 2}} </span>
                          </li>
                         <li>
-                            <i class="fas fa-star" v-for="(star, i) in stars" :class="Math.floor(movie.vote_average / 2) > i? 'active' : ''"></i>
+                            <i class="fas fa-star" v-for="i in 5" :class="Math.round(movie.vote_average / 2) > i? 'active' : ''"></i>
                         </li>
                     </ul>
                 </div>
@@ -44,16 +48,20 @@
                 <div class="container-series">
                     <h1>Series</h1>
                     <ul v-for="serie in series">
+                        <li>
+                            <img class="img-locandina" v-if="serie.poster_path != null" :src="'https://image.tmdb.org/t/p/' + 'w185' + serie.poster_path" alt="locandina non disponibile">
+                            <img class="img-non-disp" v-else="" src="non-disp.jpg" alt="locandina non disponibile">
+                        </li>
                         <li>Titolo: {{serie.name}}</li>
                         <li>Titolo originale: {{serie.original_name}}</li>
                         <li>Lingua:
-                            <img :src="serie.original_language + '.jpg'" :alt="serie.original_language">
+                            <img class="flags" :src="serie.original_language + '.jpg'" :alt="serie.original_language">
                         </li>
                         <li>Voto:
                             <span> {{serie.vote_average / 2}} </span>
                          </li>
                         <li>
-                            <i class="fas fa-star" v-for="(star, i) in stars" :class="Math.floor(serie.vote_average / 2) > i? 'active' : ''"></i>
+                            <i class="fas fa-star" v-for="i in 5" :class="Math.round(serie.vote_average / 2) > i? 'active' : ''"></i>
                         </li>
                     </ul>
                 </div>
