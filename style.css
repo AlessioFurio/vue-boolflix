@@ -5,6 +5,28 @@
     font-family: 'Poppins', sans-serif;
 }
 
+h1 {
+    text-align: center;
+}
+
+ul {
+    margin: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+li span {
+    background-color: lightgreen;
+    margin-left: 5px;
+}
+
 .search-bar {
     width: 100%;
     text-align: center;
@@ -14,22 +36,15 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
+    margin-top: 20px;
 }
 
-ul {
-    margin: 20px;
+.container-movies {
+    width: 50%;
 }
 
-li {
-    display: flex;
-}
-
-li span {
-    background-color: lightgreen;
-    margin-left: 5px;
+.container-series {
+    width: 50%;
 }
 
 img {
@@ -39,6 +54,12 @@ img {
     margin-left: 5px;
 }
 
+.disactive {
+    color: #000;
+
+}
+
 .active{
-    background-color: yellow;
+    color: orange;
+
 }

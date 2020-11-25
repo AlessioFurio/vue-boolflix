@@ -23,43 +23,43 @@
             </div>
 
             <div class="container">
-                <h1>Movies</h1>
-                <ul v-for="movie in movies">
-                    <li>titolo: {{movie.title}}</li>
-                    <li>titolo originale: {{movie.original_title}}</li>
-                    <li>lingua:
-                        <span> {{ movie.original_language }} </span>
-                        <img :src="movie.original_language + '.jpg'" :alt="movie.original_language">
-                    </li>
-                    <li>voto: {{movie.vote_average}}</li>
-                    <li>voto in base 5:
-                        <span> {{movie.vote_average / 2}} </span>
+                <div class="container-movies">
+                    <h1>Movies</h1>
+                    <ul v-for="movie in movies">
+                        <li>Titolo: {{movie.title}}</li>
+                        <li>Titolo originale: {{movie.original_title}}</li>
+                        <li>Lingua:
+                            <img :src="movie.original_language + '.jpg'" :alt="movie.original_language">
+                        </li>
+                        <li>Voto
+                            <span> {{movie.vote_average / 2}} </span>
+                         </li>
+                        <li>
+                            <i class="fas fa-star" v-for="(star, i) in stars" :class="Math.floor(movie.vote_average / 2) > i? 'active' : ''"></i>
+                        </li>
+                    </ul>
+                </div>
+                <!-- fine container-movies -->
 
-                     </li>
-                    <li>
-                        <i class="far fa-star" v-for="(star, i) in stars" :class="Math.floor(movie.vote_average / 2) > i? 'active' : ''"></i>
-                    </li>
-                </ul>
-
-                <h1>Series</h1>
-                <ul v-for="serie in series">
-                    <li>titolo: {{serie.name}}</li>
-                    <li>titolo originale: {{serie.original_name}}</li>
-                    <li>lingua:
-                        <span> {{ serie.original_language }} </span>
-                        <img :src="serie.original_language + '.jpg'" :alt="serie.original_language">
-                    </li>
-                    <li>voto: {{serie.vote_average}}</li>
-                    <li>voto in base 5:
-                        <span> {{serie.vote_average / 2}} </span>
-
-                     </li>
-                    <li>
-                        <i class="far fa-star" v-for="(star, i) in stars" :class="Math.floor(serie.vote_average / 2) > i? 'active' : ''"></i>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                <div class="container-series">
+                    <h1>Series</h1>
+                    <ul v-for="serie in series">
+                        <li>Titolo: {{serie.name}}</li>
+                        <li>Titolo originale: {{serie.original_name}}</li>
+                        <li>Lingua:
+                            <img :src="serie.original_language + '.jpg'" :alt="serie.original_language">
+                        </li>
+                        <li>Voto:
+                            <span> {{serie.vote_average / 2}} </span>
+                         </li>
+                        <li>
+                            <i class="fas fa-star" v-for="(star, i) in stars" :class="Math.floor(serie.vote_average / 2) > i? 'active' : ''"></i>
+                        </li>
+                    </ul>
+                </div>
+                <!-- fine container-series -->
+            </div> <!-- fine container -->
+        </div> <!-- fine app Vue -->
 
 
 
