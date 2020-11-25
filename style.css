@@ -13,6 +13,7 @@ ul {
     max-width: 200px;
     margin: 20px;
     border-radius: 10px;
+    text-align: center;
 }
 
 li {
@@ -20,12 +21,14 @@ li {
     justify-content: center;
     margin: 10px 0;
     width: 100%;
+    font-size: 12px;
 }
 
 li span {
-    background-color: lightgreen;
-    margin-left: 5px;
+    font-weight: bold;
+    margin-right: 1px;
 }
+
 
 .search-bar {
     width: 100%;

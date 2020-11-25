@@ -46,17 +46,16 @@
                             </div>
                             <div class="face back">
                                 <div class="card-description">
-                                    <li>Titolo: {{movie.title}}</li>
-                                    <li>Titolo originale: {{movie.original_title}}</li>
-                                    <li>Lingua:
+                                    <li><span>Titolo: </span> {{movie.title}}</li>
+                                    <li><span>Titolo originale: </span> {{movie.title}}</li>
+                                    <li><span>Lingua: </span>
                                         <img class="flags" :src="movie.original_language + '.jpg'" :alt="movie.original_language">
                                     </li>
-                                    <li id="overview">Trama: {{movie.overview.substring(0, 60)}} </li>
-                                    <li>Voto
+                                    <li><span>Trama: </span> {{ movie.overview.substring(0, 40) }} </li>
+                                    <li><span>Voto: </span>
                                         <span> {{movie.vote_average / 2}} </span>
                                      </li>
-                                    <li>
-                                        <i class="fas fa-star" v-for="i in 5" :class="Math.round(movie.vote_average / 2) > i? 'active' : ''"></i>
+                                        <i class="fas fa-star" v-for="i in 5" :class="Math.round(movie.vote_average / 2) >= i? 'active' : ''"></i>
                                     </li>
                                 </div>
                             </div>
@@ -66,7 +65,7 @@
                 <!-- fine container-movies -->
 
                 <h1>Series</h1>
-                <div class="container-movies">
+                <div class="container-series">
 
                     <ul v-for="serie in series">
                         <div class="card">
@@ -78,17 +77,17 @@
                             </div>
                             <div class="face back">
                                 <div class="card-description">
-                                    <li>Titolo: {{serie.name}}</li>
-                                    <li>Titolo originale: {{serie.original_name}}</li>
-                                    <li>Lingua:
+                                    <li><span>Titolo: </span> {{serie.name}}</li>
+                                    <li><span>Titolo originale: </span> {{serie.original_name}}</li>
+                                    <li><span>Lingua: </span>
                                         <img class="flags" :src="serie.original_language + '.jpg'" :alt="serie.original_language">
                                     </li>
-                                    <!-- <li>Trama: {{serie.overview}} </li> -->
-                                    <li>Voto:
+                                    <li><span>Trama: </span> {{serie.overview.substring(0, 40)}} </li>
+                                    <li><span>Voto: </span>
                                         <span> {{serie.vote_average / 2}} </span>
                                      </li>
                                     <li>
-                                        <i class="fas fa-star" v-for="i in 5" :class="Math.round(serie.vote_average / 2) > i? 'active' : ''"></i>
+                                        <i class="fas fa-star" v-for="i in 5" :class="Math.round(serie.vote_average / 2) >= i? 'active' : ''"></i>
                                     </li>
                                 </div>
                             </div>
