@@ -10,16 +10,16 @@ h1 {
 }
 
 ul {
+    max-width: 200px;
     margin: 20px;
-    border: 1px solid grey;
     border-radius: 10px;
-    background-color: #f9f9f9;
 }
 
 li {
     display: flex;
     justify-content: center;
     margin: 10px 0;
+    width: 100%;
 }
 
 li span {
@@ -30,21 +30,55 @@ li span {
 .search-bar {
     width: 100%;
     text-align: center;
+    background-color: #000;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.header-left,
+.header-right {
+    width: 50%;
+}
+
+.logo {
+    color: red;
+    text-align: left;
+    margin-left: 50px;
+}
+
+.content-header-right {
+    margin-right: 50px;
+}
+
+.header-right {
+    text-align: right;
+}
+
+.header-right input,
+.header-right button {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
 }
 
 .container {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
     margin-top: 20px;
 }
 
 .container-movies {
-    width: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .container-series {
-    width: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 img.flags {
@@ -55,12 +89,13 @@ img.flags {
 }
 
 .img-non-disp {
-    width: 185px;
-    height: 262px;
+    width: 100%;
+    height: 300px;
 }
 
 .img-locandina {
-    height: 262px;
+
+    height: 300px;
 }
 
 .disactive {
@@ -71,4 +106,45 @@ img.flags {
 .active{
     color: orange;
 
+}
+
+.card {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    transform-style: preserve-3d;
+}
+
+
+.card .face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 2s ease-in-out;
+    transform: perspective(500px) rotateY(0deg);
+}
+
+
+.card .face.front {
+
+}
+
+.card:hover .face.front {
+    transform: perspective(500px) rotateY(180deg);
+}
+
+.card .face.back {
+    background-color: #DCDCDC;
+    color: #000;
+    transform: perspective(500px) rotateY(180deg);
+}
+
+.card:hover .face.back {
+    transform: perspective(500px) rotateY(360deg);
 }

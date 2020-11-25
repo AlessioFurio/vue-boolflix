@@ -17,55 +17,85 @@
     <body>
 
         <div id="root">
-            <div class="search-bar">
-                <input v-model="search" @keyUp.enter = "searchFilm(), searchSeries()" type="text" name="" value="" placeholder="Cerca film, serie tv...">
-                <button @click="searchFilm(), searchSeries()">Cerca</button>
-            </div>
+            <header class="search-bar">
+
+                <div class="header-left">
+                    <h1 class="logo">Boolflix</h1>
+                </div>
+
+                <div class="header-right">
+                    <div class="content-header-right">
+                        <input v-model="search" @keyUp.enter = "searchFilm(), searchSeries()" type="text" name="" value="" placeholder="Cerca film, serie tv...">
+                        <button @click="searchFilm(), searchSeries()">Cerca</button>
+                    </div>
+                </div>
+
+            </header>
 
             <div class="container">
+                <h1>Movies</h1>
                 <div class="container-movies">
-                    <h1>Movies</h1>
+
                     <ul v-for="movie in movies">
-                        <li>
-                            <img class="img-locandina" v-if="movie.poster_path != null" :src="'https://image.tmdb.org/t/p/' + 'w185' + movie.poster_path" alt="locandina non disponibile">
-                            <img class="img-non-disp" v-else="" src="non-disp.jpg" alt="locandina non disponibile">
-                        </li>
-                        <li>Titolo: {{movie.title}}</li>
-                        <li>Titolo originale: {{movie.original_title}}</li>
-                        <li>Lingua:
-                            <img class="flags" :src="movie.original_language + '.jpg'" :alt="movie.original_language">
-                        </li>
-                        <li>Voto
-                            <span> {{movie.vote_average / 2}} </span>
-                         </li>
-                        <li>
-                            <i class="fas fa-star" v-for="i in 5" :class="Math.round(movie.vote_average / 2) > i? 'active' : ''"></i>
-                        </li>
+                        <div class="card">
+                            <div class="face front">
+                                <li class="locandina">
+                                    <img class="img-locandina" v-if="movie.poster_path != null" :src="'https://image.tmdb.org/t/p/' + 'w185' + movie.poster_path" alt="locandina non disponibile">
+                                    <img class="img-non-disp" v-else="" src="non-disp.jpg" alt="locandina non disponibile">
+                                </li>
+                            </div>
+                            <div class="face back">
+                                <div class="card-description">
+                                    <li>Titolo: {{movie.title}}</li>
+                                    <li>Titolo originale: {{movie.original_title}}</li>
+                                    <li>Lingua:
+                                        <img class="flags" :src="movie.original_language + '.jpg'" :alt="movie.original_language">
+                                    </li>
+                                    <li id="overview">Trama: {{movie.overview.substring(0, 60)}} </li>
+                                    <li>Voto
+                                        <span> {{movie.vote_average / 2}} </span>
+                                     </li>
+                                    <li>
+                                        <i class="fas fa-star" v-for="i in 5" :class="Math.round(movie.vote_average / 2) > i? 'active' : ''"></i>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
                 </div>
                 <!-- fine container-movies -->
 
-                <div class="container-series">
-                    <h1>Series</h1>
+                <h1>Series</h1>
+                <div class="container-movies">
+
                     <ul v-for="serie in series">
-                        <li>
-                            <img class="img-locandina" v-if="serie.poster_path != null" :src="'https://image.tmdb.org/t/p/' + 'w185' + serie.poster_path" alt="locandina non disponibile">
-                            <img class="img-non-disp" v-else="" src="non-disp.jpg" alt="locandina non disponibile">
-                        </li>
-                        <li>Titolo: {{serie.name}}</li>
-                        <li>Titolo originale: {{serie.original_name}}</li>
-                        <li>Lingua:
-                            <img class="flags" :src="serie.original_language + '.jpg'" :alt="serie.original_language">
-                        </li>
-                        <li>Voto:
-                            <span> {{serie.vote_average / 2}} </span>
-                         </li>
-                        <li>
-                            <i class="fas fa-star" v-for="i in 5" :class="Math.round(serie.vote_average / 2) > i? 'active' : ''"></i>
-                        </li>
+                        <div class="card">
+                            <div class="face front">
+                                <li>
+                                    <img class="img-locandina" v-if="serie.poster_path != null" :src="'https://image.tmdb.org/t/p/' + 'w185' + serie.poster_path" alt="locandina non disponibile">
+                                    <img class="img-non-disp" v-else="" src="non-disp.jpg" alt="locandina non disponibile">
+                                </li>
+                            </div>
+                            <div class="face back">
+                                <div class="card-description">
+                                    <li>Titolo: {{serie.name}}</li>
+                                    <li>Titolo originale: {{serie.original_name}}</li>
+                                    <li>Lingua:
+                                        <img class="flags" :src="serie.original_language + '.jpg'" :alt="serie.original_language">
+                                    </li>
+                                    <!-- <li>Trama: {{serie.overview}} </li> -->
+                                    <li>Voto:
+                                        <span> {{serie.vote_average / 2}} </span>
+                                     </li>
+                                    <li>
+                                        <i class="fas fa-star" v-for="i in 5" :class="Math.round(serie.vote_average / 2) > i? 'active' : ''"></i>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
                 </div>
-                <!-- fine container-series -->
+
             </div> <!-- fine container -->
         </div> <!-- fine app Vue -->
 
