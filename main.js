@@ -7,6 +7,11 @@ var app = new Vue({
 		movies: [], // array dei movies
 		series: [],
 		search: '', // input v-model
+		arrayFlags: ['it', 'en'],
+		arrayGeneri: [],
+		selectedGenre: '',
+		arrayGeneriMovie: [],
+		arrayGeneriSeries: [],
 	},
 
 	methods: {
@@ -22,10 +27,29 @@ var app = new Vue({
 			.then((risposta) =>{
 
 				this.movies = risposta.data.results; // assegno ad array movies la risposta API
+				this.movies.forEach((item, i) => {
 
-				console.log(this.movies);
+						this.arrayGeneriMovie.push(item.genre_ids);
+				});
 			}); // fine then
+
+
+					// CHIAMATA X REPERIRE I GENERI DI TUTTI I FILM x la select
+			axios
+			.get('https://api.themoviedb.org/3/genre/movie/list', {
+				params: {
+					api_key: '3b8fd41bd03a505fc96b3ca3fb875ed4',
+				}
+				})
+			.then((rispostaGeneri) =>{
+
+				this.arrayGeneri = rispostaGeneri.data.genres; // assegno ad array generi la risposta API
+			}); // fine then
+
 		}, // fine searcFilm
+
+
+
 
 		searchSeries(){ // funzione cerca series
 
@@ -39,8 +63,11 @@ var app = new Vue({
 			.then((risposta2) =>{
 
 				this.series = risposta2.data.results; // assegno ad array series la risposta API
+				this.series.forEach((item, i) => {
 
-				console.log(this.series);
+						this.arrayGeneriSeries.push(item.genre_ids);
+				});
+
 			}); // fine then
 
 		}// fine searchSeries

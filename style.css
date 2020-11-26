@@ -73,14 +73,14 @@ li span {
 .container-movies {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .container-series {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -131,11 +131,6 @@ img.flags {
     align-items: center;
     transition: 2s ease-in-out;
     transform: perspective(500px) rotateY(0deg);
-}
-
-
-.card .face.front {
-
 }
 
 .card:hover .face.front {

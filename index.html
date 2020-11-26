@@ -23,6 +23,11 @@
                     <h1 class="logo">Boolflix</h1>
                 </div>
 
+                <select class="" name="" v-model="selectedGenre">
+                    <option value="">Tutti i generi</option>
+                    <option v-for="genere in arrayGeneri" :value="genere.id">{{genere.name}}</option>
+                </select>
+
                 <div class="header-right">
                     <div class="content-header-right">
                         <input v-model="search" @keyUp.enter = "searchFilm(), searchSeries()" type="text" name="" value="" placeholder="Cerca film, serie tv...">
@@ -36,7 +41,7 @@
                 <h1>Movies</h1>
                 <div class="container-movies">
 
-                    <ul v-for="movie in movies">
+                    <ul v-for="(movie, indice) in movies" v-if="arrayGeneriMovie[indice].includes(selectedGenre) || selectedGenre == ''">
                         <div class="card">
                             <div class="face front">
                                 <li class="locandina">
@@ -47,9 +52,10 @@
                             <div class="face back">
                                 <div class="card-description">
                                     <li><span>Titolo: </span> {{movie.title}}</li>
-                                    <li><span>Titolo originale: </span> {{movie.title}}</li>
+                                    <li><span>Titolo originale: </span> {{movie.original_title}}</li>
                                     <li><span>Lingua: </span>
-                                        <img class="flags" :src="movie.original_language + '.jpg'" :alt="movie.original_language">
+                                        <img v-if="arrayFlags.includes(movie.original_language)" class="flags" :src="movie.original_language + '.jpg'" :alt="movie.original_language">
+                                        <span v-else="">N.D.</span>
                                     </li>
                                     <li><span>Trama: </span> {{ movie.overview.substring(0, 40) }} </li>
                                     <li><span>Voto: </span>
@@ -67,7 +73,7 @@
                 <h1>Series</h1>
                 <div class="container-series">
 
-                    <ul v-for="serie in series">
+                    <ul v-for="(serie, indice) in series" v-if="arrayGeneriSeries[indice].includes(selectedGenre) || selectedGenre == ''">
                         <div class="card">
                             <div class="face front">
                                 <li>
@@ -80,7 +86,8 @@
                                     <li><span>Titolo: </span> {{serie.name}}</li>
                                     <li><span>Titolo originale: </span> {{serie.original_name}}</li>
                                     <li><span>Lingua: </span>
-                                        <img class="flags" :src="serie.original_language + '.jpg'" :alt="serie.original_language">
+                                        <img class="flags" v-if="arrayFlags.includes(serie.original_language)" :src="serie.original_language + '.jpg'" :alt="serie.original_language">
+                                        <span v-else="">N.D.</span>
                                     </li>
                                     <li><span>Trama: </span> {{serie.overview.substring(0, 40)}} </li>
                                     <li><span>Voto: </span>
